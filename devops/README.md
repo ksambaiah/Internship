@@ -8,7 +8,9 @@ What is considered to be DevOps? I started as Linux System administrator in a sm
 - Training recruits
 - Acquire  hardware 
 - Backup
-When I see people talking DevOps in current situation does it mean
+
+When I see now a days talking DevOps does it mean 
+
 - Python
 - Cloud 
 - CI/CD
