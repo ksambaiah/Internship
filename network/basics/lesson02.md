@@ -14,12 +14,13 @@ IPv6 is rapidly coming, but it takes some time to adopt.
 
 IPv4 address is a 32 bit address space, each 8 bits are separated by a dot so the address looks like 172.16.100.12. A flat network with address 10.2.3.4 communication with 192.16.14.20 requires understanding 2^32 locations is an impossible task. 32 bit address space is split into two parts, one part is the network part.
 
-172.16.100.0/24 network means the first 24 bits is for network and you can have IP range from 172.16.100.0 to 172.16.100.255. Any subnet part all zero and all one are reserved, valid range is 172.16.100.1 to 172.16.100.254.
- 172.16.100.24/32 means it is a single IP address
-10.0.0.0/8 have 2^{18}-2 addresses
-Organisations will have thousands of computers, mobile devices and home computers combined to cross the limit of 2^{32} if we start giving IP  for each device. How do we solve the problem of not having enough addresses? 
-Idea 1. Most of the time home or organization systems communicate with each other and rarely do they need to talk to the outside world.
-Communication within the organization call private and outside public. 
+- 172.16.100.0/24 network means the first 24 bits is for network and you can have IP range from 172.16.100.0 to 172.16.100.255. Any subnet part all zero and all one are reserved, valid range is 172.16.100.1 to 172.16.100.254.
+-  172.16.100.24/32 means it is a single IP address
+- 10.0.0.0/8 have 2^{18}-2 addresses
+- Organisations will have thousands of computers, mobile devices and home computers combined to cross the limit of 2^{32} if we start giving IP  for each device. How do we solve the problem of not having enough addresses? 
+- Idea 1. Most of the time home or organization systems communicate with each other and rarely do they need to talk to the outside world.
+- Communication within the organization call private and outside public. 
+
 Specify a range of addresses for private and no one in the public get this range and ignored if seen in the public network.
 [RFC 1918](https://datatracker.ietf.org/doc/html/rfc1918) Covers details of private address space.
 RFC 1918 defines the following address ranges as private
@@ -28,11 +29,11 @@ RFC 1918 defines the following address ranges as private
 > 192.168.0.0/16 (addresses 192.168.0.0 through 192.168.255.255 inclusive)
 > The addresses in these ranges are not routable in the Internet and may be freely used by any organisation for local purposes only.
 
-Each system or mobile devie required to browse needs to have IP address
-Private address space also called RFC1918 address space will not be able to communicate to internet.
-Private address space is also called RFC1918
-Routable address is called public address
-If you have multiple devices at home, each one gets private IP from the router and the router gets public IP from the Internet provider. We will cover how your private IP is routed to the internet from the router.
+- Each system or mobile devie required to browse needs to have IP address
+- Private address space also called RFC1918 address space will not be able to communicate to internet.
+- Private address space is also called RFC1918
+- Routable address is called public address
+- If you have multiple devices at home, each one gets private IP from the router and the router gets public IP from the Internet provider. We will cover how your private IP is routed to the internet from the router.
 
 
 ## We will cover ports, 5 tuple, and NAT
@@ -53,10 +54,14 @@ We discussed private IP space (also called RFC1918 addresses) and your home comp
 (192.168.29.40, 23745, 142.250.192.68, 443, tcp) 
 We know that 192.168.29.40 is not routable to the internet, how is it able to communicate?
 
-Router works like Network address translation or NAT device (You will learn later it is called SNAT source network address translation)
-Router has public IP assigned from Internet Service provider
-Magic happens (192.168.29.40, 23745, 142.250.192.68, 443, tcp)  is sent to the internet as (PublicIPofRouter, 34821, 142.250.192.68, 443, tcp)
-Router keeps table of 192.168.29.40, 23745 --> PublicIP, 34821
-Once data received to public IP port number 23745, it will be replaced with 192.168.29.40
-Source or originator network address and port is translated so it is called Source NAT
+- Router works like Network address translation or NAT device (You will learn later it is called SNAT source network address translation)
+- Router has public IP assigned from Internet Service provider
+- Magic happens (192.168.29.40, 23745, 142.250.192.68, 443, tcp)  is sent to the internet as (PublicIPofRouter, 34821, 142.250.192.68, 443, tcp)
+- Router keeps table of 192.168.29.40, 23745 --> PublicIP, 34821
+- Once data received to public IP port number 23745, it will be replaced with 192.168.29.40
+- Source or originator network address and port is translated so it is called Source NAT
 
+
+Question1: Find out your system IP and your public IP.
+Question2: Run tracert www.purdue.edu on Windows and traceroute www.purdue.edu
+Question3: Find out default gateway and DNS servers of your system.

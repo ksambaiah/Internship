@@ -43,15 +43,16 @@ nameserver 72.163.128.140
 ```
 Let us try to understand the above output.
 
-We wanted to know the address of www.purdue.edu and got as 128.210.7.200 request went to get this went to 72.163.128.140
-we wanted to know who will provide me an answer to   purdue.edu (we also called nameserver so set type=ns) and got as 128.42.209.32 and 128.210.224.226
+- We wanted to know the address of www.purdue.edu and got as 128.210.7.200 request went to get this went to 72.163.128.140
+- we wanted to know who will provide me an answer to   purdue.edu (we also called nameserver so set type=ns) and got as 128.42.209.32 and 128.210.224.226
 PTR record is not important at this point
-We are getting answers from 72.163.128.140 and 64.104.128.236. Why are these two servers providing answers?
-/etc/resolv.conf file is updated by DHCP (even VPN, that is other time) has data search cisco.com nameserver 64.104.128.236 nameserver 72.163.128.140
-Any query for DNS reaches out to the two servers listed above
-Notice is that DNS is a critical infrastructure on the Internet. If DNS is down if service is up, no way we use service.
-October 2021 Facebook is down because DNS servers are failed.
-DNS is fairly distributed very rare to fail.
+- We are getting answers from 72.163.128.140 and 64.104.128.236. Why are these two servers providing answers?
+- /etc/resolv.conf file is updated by DHCP (even VPN, that is other time) has data search cisco.com nameserver 64.104.128.236 nameserver 72.163.128.140
+- Any query for DNS reaches out to the two servers listed above
+- Notice is that DNS is a critical infrastructure on the Internet. If DNS is down if service is up, no way we use service.
+- October 2021 Facebook is down because DNS servers are failed.
+- DNS is fairly distributed very rare to fail.
+
 We understood queries and we don't do unless we wanted to debug. We would like to know how to set up DNS and what kind of servers are available.
 
 If you wanted to get resolved and don't have any setup you call it resolver only configuration.
